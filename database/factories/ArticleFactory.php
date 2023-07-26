@@ -21,7 +21,7 @@ class ArticleFactory extends Factory
         return [
             'title' =>fake()->title(),
             'description' => fake()->text(),
-            'image_path' => fake()->title(),
+            'image_path' => fake()->filePath(),
             'user_id' => $user->id,
         ];
     }

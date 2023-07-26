@@ -42,4 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function articles(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Article::class,'id','id');
+    }
 }
