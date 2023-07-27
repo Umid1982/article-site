@@ -43,8 +43,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function articles(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function articles(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasOne(Article::class,'id','id');
+        return $this->hasMany(Article::class);
+    }
+
+    public function likedArticles()
+    {
+        return $this->belongsToMany(Article::class, 'like_articles', 'user_id', 'post_id');
     }
 }

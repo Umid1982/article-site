@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Constatns\ResponseConstants\UserResponseEnum;
 use App\Http\Requests\Article\ArticleStoreRequest;
 use App\Http\Requests\Article\ArticleUpdateRequest;
+use App\Http\Resources\ArticleLikesResource;
 use App\Http\Resources\ArticleResource;
 use App\Models\Article;
 use Illuminate\Http\Request;
@@ -65,9 +66,8 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         try {
-
             return response([
-                'data' => ArticleResource::make($article),
+                'data' => ArticleLikesResource::make($article),
                 'message' => UserResponseEnum::ARTICLE_SHOW,
                 'success' => true,
             ]);
@@ -125,4 +125,22 @@ class ArticleController extends Controller
             ]);
         }
     }
+
+    public function articleLike(Article $article)
+    {
+        try {
+
+                $result =$article->likedUsers()->toggle($article->id);
+                $data['is_liked'] = count($result['attached']) > 0;
+                $data['likes_count'] = $article->likedUsers()->count();
+                return $data;
+        } catch (Exception $exception) {
+            return response([
+                'message' => $exception->getMessage(),
+                'success' => false,
+            ]);
+        }
+    }
+
+
 }
