@@ -14,6 +14,8 @@ class Article extends Model
         'description',
         'image_path',
         'user_id',
+        'likes_count',
+        'shows_count',
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -21,9 +23,5 @@ class Article extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function likedUsers(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
-    {
-        return $this->belongsToMany(User::class, 'like_articles', 'article_id', 'user_id');
-    }
 
 }

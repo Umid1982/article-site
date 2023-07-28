@@ -9,5 +9,6 @@ enum UserResponseEnum: string
     case ARTICLE_CREATE = 'Article create';
     case ARTICLE_UPDATE = 'Article update';
     case ARTICLE_DELETE = 'Article delete';
+    case ARTICLE_LIKES = 'Article likes';
     case ERROR = "Something went wrong, check Logs!";
 }

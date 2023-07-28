@@ -21,7 +21,8 @@ class ArticleLikesResource extends JsonResource
             'description' => $this->description,
             'author_id' => $this->user_id,
             'date' => $this->created_at->diffForHumans(),
-            'likes_count'=>$this->likedUsers->count(),
+            'likes_count' => $this->likes_count,
+            'shows_count' => $this->shows_count,
         ];
     }
 }

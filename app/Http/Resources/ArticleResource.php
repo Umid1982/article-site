@@ -21,6 +21,7 @@ class ArticleResource extends JsonResource
             'description' => $this->description,
             'author_id' => $this->user_id,
             'date' => $this->created_at->diffForHumans(),
+            'shows_count' => $this->shows_count,
         ];
     }
 }

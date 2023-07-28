@@ -66,6 +66,7 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         try {
+            event('Article_count', $article);//счетчик просмотров статьи
             return response([
                 'data' => ArticleLikesResource::make($article),
                 'message' => UserResponseEnum::ARTICLE_SHOW,
@@ -129,11 +130,14 @@ class ArticleController extends Controller
     public function articleLike(Article $article)
     {
         try {
-
-                $result =$article->likedUsers()->toggle($article->id);
-                $data['is_liked'] = count($result['attached']) > 0;
-                $data['likes_count'] = $article->likedUsers()->count();
-                return $data;
+            event('Likes_count', $article);//счетчик лайков статьи
+            $data['is_liked'] = true;
+            $data['likes_count'] = $article->likes_count;
+            return response([
+                'data'=>$data,
+                'message' => UserResponseEnum::ARTICLE_LIKES,
+                'success' => true,
+            ]);
         } catch (Exception $exception) {
             return response([
                 'message' => $exception->getMessage(),

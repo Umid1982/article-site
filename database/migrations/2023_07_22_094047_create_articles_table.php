@@ -17,6 +17,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('image_path')->nullable();
             $table->foreignId('user_id')->constrained();
+            $table->integer('likes_count')->nullable();
+            $table->integer('shows_count')->nullable();
             $table->timestamps();
         });
     }

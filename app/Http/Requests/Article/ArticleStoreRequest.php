@@ -22,10 +22,10 @@ class ArticleStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'=>'required|string|max:255',
-            'description'=>'required|string|max:500',
-            'user_id'=>'required|integer|exists:users,id',
-            'image_path' => 'required|file|mimes:jpg,jpeg,png|max:10240'
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:500',
+            'user_id' => 'required|integer|exists:users,id',
+            'image_path' => 'required|file|mimes:jpg,jpeg,png|max:10240',
         ];
     }
 }
