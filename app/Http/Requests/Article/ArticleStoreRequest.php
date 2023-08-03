@@ -26,6 +26,8 @@ class ArticleStoreRequest extends FormRequest
             'description' => 'required|string|max:500',
             'user_id' => 'required|integer|exists:users,id',
             'image_path' => 'required|file|mimes:jpg,jpeg,png|max:10240',
+            'tag' => 'nullable|array',
+            'tag.*' => 'required|string',
         ];
     }
 }

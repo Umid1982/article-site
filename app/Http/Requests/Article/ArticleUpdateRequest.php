@@ -26,6 +26,8 @@ class ArticleUpdateRequest extends FormRequest
             'description' => 'nullable|string|max:500',
             'user_id' => 'nullable|integer|exists:users,id',
             'image_path'=> 'nullable|file|mimes:jpg,jpeg,png|max:10240',
+            'tag' => 'nullable|array',
+            'tag.*' => 'nullable|string',
         ];
     }
 }
