@@ -2,10 +2,11 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ArticleResource extends JsonResource
+class ArticleLikesResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -21,6 +22,7 @@ class ArticleResource extends JsonResource
             'description' => $this->description,
             'author_id' => $this->user_id,
             'date' => $this->created_at->diffForHumans(),
+            'likes_count' => $this->likes_count,
             'shows_count' => $this->shows_count,
         ];
     }

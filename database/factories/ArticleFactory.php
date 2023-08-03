@@ -19,10 +19,12 @@ class ArticleFactory extends Factory
     {
         $user = User::query()->inRandomOrder()->first();
         return [
-            'title' =>fake()->title(),
+            'title' => fake()->title(),
             'description' => fake()->text(),
-            'image_path' => fake()->title(),
+            'image_path' => fake()->filePath(),
             'user_id' => $user->id,
+            'likes_count' => fake()->numberBetween(1, 50),
+            'shows_count' => fake()->numberBetween(1, 100),
         ];
     }
 }
